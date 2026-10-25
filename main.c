@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
+/*   Updated: 2026/10/25 15:29:46 by mharoud          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	main(int argc, char **argv)
@@ -11,13 +23,6 @@ int	main(int argc, char **argv)
 	cfg.stack_a = NULL;
 	cfg.stack_b = NULL;
 	parse_args(argc, argv, &cfg);
-	/*
-	 * Run sorting strategy according to cfg.mode:
-	 *   - MODE_SIMPLE  -> e.g., insertion / selection sort logic
-	 *   - MODE_NORMAL  -> standard radix / chunk sort
-	 *   - MODE_COMPLEX -> Turk algorithm / cost calculation sort
-	 * If cfg.bench is active, output instruction counts to stderr/stdout.
-	 */
 	free_stack(&cfg.stack_a);
 	free_stack(&cfg.stack_b);
 	return (0);
