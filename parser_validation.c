@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:42 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/25 15:28:48 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/25 21:00:29 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ static int	ft_strcmp(const char *s1, const char *s2)
 
 int	parse_flag(char *str, t_config *cfg)
 {
-	if (ft_strcmp(str, "--simple") == 0)
+	if (ft_strcmp(str, "--adaptive") == 0)
+		cfg->mode == MODE_ADAPTIVE;
+	else if (ft_strcmp(str, "--simple") == 0)
 		cfg->mode = MODE_SIMPLE;
-	else if (ft_strcmp(str, "--normal") == 0)
-		cfg->mode = MODE_NORMAL;
+	else if (ft_strcmp(str, "--medium") == 0)
+		cfg->mode = MODE_MEDIUM;
 	else if (ft_strcmp(str, "--complex") == 0)
 		cfg->mode = MODE_COMPLEX;
 	else if (ft_strcmp(str, "--bench") == 0)

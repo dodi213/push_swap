@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/25 15:40:54 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/25 20:56:16 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 typedef enum e_mode
 {
-	MODE_NORMAL = 0,
+	MODE_ADAPTIVE = 0,
 	MODE_SIMPLE,
+	MODE_MEDIUM,
 	MODE_COMPLEX
 }	t_mode;
 

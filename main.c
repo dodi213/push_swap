@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/25 15:29:46 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/25 21:00:29 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	cfg.mode = MODE_NORMAL;
+	cfg.mode = MODE_ADAPTIVE;
 	cfg.bench = 0;
 	cfg.stack_a = NULL;
 	cfg.stack_b = NULL;
