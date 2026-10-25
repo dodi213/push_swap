@@ -6,11 +6,11 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 14:37:27 by fferschi          #+#    #+#             */
-/*   Updated: 2026/10/22 17:42:38 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/10/25 20:08:11 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ps.h"
+#include "push_swap.h"
 
 void	bubble_sort_n_carre(t_list **lst)
 {
