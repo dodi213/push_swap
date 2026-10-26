@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 15:47:02 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 16:53:07 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/26 17:01:33 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,21 @@ void	swap(t_node **stack)
 	*stack = second;
 }
 
-void	sa(t_node **a, int print)
+void	sa(t_node **a)
 {
 	swap(a);
-	if (print)
-		write(1, "sa\n", 3);
+	write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b, int print)
+void	sb(t_node **b)
 {
 	swap(b);
-	if (print)
-		write(1, "sb\n", 3);
+	write(1, "sb\n", 3);
 }
 
-void	ss(t_node **a, t_node **b, int print)
+void	ss(t_node **a, t_node **b)
 {
 	swap(a);
 	swap(b);
-	if (print)
-		write(1, "ss\n", 3);
+	write(1, "ss\n", 3);
 }

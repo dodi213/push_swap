@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:54:17 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 16:54:36 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/26 17:04:16 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,21 @@ static void	rotate(t_node **stack)
 	first->next = NULL;
 }
 
-void	ra(t_node **a, int print)
+void	ra(t_node **a)
 {
 	rotate(a);
-	if (print)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b, int print)
+void	rb(t_node **b)
 {
 	rotate(b);
-	if (print)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b, int print)
+void	rr(t_node **a, t_node **b)
 {
 	rotate(a);
 	rotate(b);
-	if (print)
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }

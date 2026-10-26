@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/26 16:35:37 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 16:54:03 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/26 17:02:11 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,14 @@ static void	push(t_node **dest, t_node **src)
 	*dest = node_to_move;
 }
 
-void	pa(t_node **a, t_node **b, int print)
+void	pa(t_node **a, t_node **b)
 {
 	push(a, b);
-	if (print)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
-void	pb(t_node **b, t_node **a, int print)
+void	pb(t_node **b, t_node **a)
 {
 	push(b, a);
-	if (print)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }
