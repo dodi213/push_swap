@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 15:35:35 by fferschi          #+#    #+#             */
-/*   Updated: 2026/10/26 16:25:55 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/10/26 16:53:51 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_list
 void	pa(t_list **a, t_list **b);
 void	pb(t_list **a, t_list **b);
 void	ra(t_list **a);
-void	ft_sort(t_list **b);
+void	bubble_sort_n_carre(t_list **lst);
 
 /* Racine entière : plus grand r tel que r * r <= n */
 int	ft_sqrt(int n)
@@ -87,7 +87,7 @@ static void	return_to_a(t_list **a, t_list **b)
 	bubble_sort_n_carre(b)
 	while (*b)
 	{
-		pa(a, b);
+		pb(a, b);
 		ra(a);
 	}
 }
