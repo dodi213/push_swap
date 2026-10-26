@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:33 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/25 15:28:48 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/26 15:23:57 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	process_tokens(char **tokens, t_config *cfg)
 	return (1);
 }
 
-int	parse_args(int argc, char **argv, t_config *cfg)
+parse_args(int argc, char **argv, t_config *cfg)
 {
 	char	**tokens;
 	int		i;

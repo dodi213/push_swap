@@ -6,7 +6,7 @@
 /*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/25 20:56:16 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/26 15:23:57 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_mode
 typedef struct s_node
 {
 	int				value;
-	int				index;
+	int				smaller;
 	struct s_node	*next;
 	struct s_node	*prev;
 }	t_node;
