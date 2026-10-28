@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 16:58:14 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/26 17:36:55 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,9 @@ void	rr(t_node **a, t_node **b, int print);
 void	rra(t_node **a, int print);
 void	rrb(t_node **b, int print);
 void	rrr(t_node **a, t_node **b, int print);
+
+// algos de tri
+void	bubble_sort_n_carre(t_node **lst);
+void	bucket_sort(t_node **a, t_node **b, int n);
 
 #endif
