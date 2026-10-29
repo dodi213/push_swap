@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/29 15:25:07 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/29 17:09:41 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int	main(int argc, char **argv)
 		return (0);
 	init_config(&cfg);
 	parse_args(argc, argv, &cfg);
+	smaller_init(&cfg.stack_a);
 	execute_sort(&cfg);
+	ft_print_val(cfg.stack_a);
 	free_stack(&cfg.stack_a);
 	free_stack(&cfg.stack_b);
 	return (0);

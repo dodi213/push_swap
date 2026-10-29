@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/28 15:00:05 by fferschi          #+#    #+#             */
-/*   Updated: 2026/10/28 17:32:16 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/10/29 16:26:45 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	radix(t_node **a, t_node **b, int print)
 			if ((((*a)->smaller >> i) & 1) == 1)
 				ra(a, print);
 			else
-				pb(a, b, print);
+				pb(b, a, print);
 			j++;
 		}
 		while (*b)

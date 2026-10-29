@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 15:35:35 by fferschi          #+#    #+#             */
-/*   Updated: 2026/10/29 16:15:00 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/10/29 16:25:41 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	return_to_a(t_node **a, t_node **b, int print)
 	bubble_sort_n_carre(b, print);
 	while (*b)
 	{
-		pb(b, a, print);
+		pa(a, b, print);
 		ra(a, print);
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/29 15:29:57 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/29 17:09:12 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,11 @@ void	exit_error(t_config *cfg);
 int		ft_lstsize(t_node *lst);
 char	**ft_split(char const *s, char c);
 
-int	ft_lstsize(t_node *lst);
+int		ft_lstsize(t_node *lst);
 char	**ft_split(char const *s, char c);
+void	smaller_init(t_node **a);
+
+// verification
+void    ft_print_val(t_node *a);
 
 #endif
