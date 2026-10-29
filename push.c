@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/26 16:35:37 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 17:02:11 by mharoud          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 static void	push(t_node **dest, t_node **src)
@@ -29,14 +17,16 @@ static void	push(t_node **dest, t_node **src)
 	*dest = node_to_move;
 }
 
-void	pa(t_node **a, t_node **b)
+void	pa(t_node **a, t_node **b, int print)
 {
 	push(a, b);
-	write(1, "pa\n", 3);
+	if (print)
+		write(1, "pa\n", 3);
 }
 
-void	pb(t_node **b, t_node **a)
+void	pb(t_node **b, t_node **a, int print)
 {
 	push(b, a);
-	write(1, "pb\n", 3);
+	if (print)
+		write(1, "pb\n", 3);
 }

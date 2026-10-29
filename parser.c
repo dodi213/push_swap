@@ -34,7 +34,7 @@ static int	process_tokens(char **tokens, t_config *cfg)
 	return (1);
 }
 
-parse_args(int argc, char **argv, t_config *cfg)
+int	parse_args(int argc, char **argv, t_config *cfg)
 {
 	char	**tokens;
 	int		i;

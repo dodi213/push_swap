@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bbsort.c                                           :+:      :+:    :+:   */
+/*   ft_bbsort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/22 14:37:27 by fferschi          #+#    #+#             */
-/*   Updated: 2026/10/26 17:14:20 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/10/29 16:15:00 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	bubble_pass(t_node **lst, unsigned int len)
+static int	bubble_pass(t_node **lst, unsigned int len, int print)
 {
 	unsigned int	count;
 	int				swapped;
@@ -21,19 +21,19 @@ static int	bubble_pass(t_node **lst, unsigned int len)
 	count = 1;
 	while (count < len)
 	{
-		if (*(int *)(*lst)->value > *(int *)(*lst)->next->value)
+		if ((*lst)->value > (*lst)->next->value)
 		{
-			sa(lst);
+			sa(lst, print);
 			swapped = 1;
 		}
-		ra(lst);
+		ra(lst, print);
 		count++;
 	}
-	ra(lst);
+	ra(lst, print);
 	return (swapped);
 }
 
-void	bubble_sort_n_carre(t_node **lst)
+void	bubble_sort_n_carre(t_node **lst, int print)
 {
 	unsigned int	len;
 	unsigned int	cnt;
@@ -44,7 +44,7 @@ void	bubble_sort_n_carre(t_node **lst)
 	cnt = 0;
 	while (cnt < len)
 	{
-		if (!bubble_pass(lst, len))
+		if (!bubble_pass(lst, len, print))
 			break ;
 		cnt++;
 	}

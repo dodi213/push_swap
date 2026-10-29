@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/26 15:47:02 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 17:01:33 by mharoud          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
-void	swap(t_node **stack)
+static void	swap(t_node **stack)
 {
 	t_node	*first;
 	t_node	*second;
@@ -30,21 +18,24 @@ void	swap(t_node **stack)
 	*stack = second;
 }
 
-void	sa(t_node **a)
+void	sa(t_node **a, int print)
 {
 	swap(a);
-	write(1, "sa\n", 3);
+	if (print)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_node **b)
+void	sb(t_node **b, int print)
 {
 	swap(b);
-	write(1, "sb\n", 3);
+	if (print)
+		write(1, "sb\n", 3);
 }
 
-void	ss(t_node **a, t_node **b)
+void	ss(t_node **a, t_node **b, int print)
 {
 	swap(a);
 	swap(b);
-	write(1, "ss\n", 3);
+	if (print)
+		write(1, "ss\n", 3);
 }

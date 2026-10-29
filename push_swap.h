@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 17:36:55 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/10/29 15:29:57 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,27 @@ void	rra(t_node **a, int print);
 void	rrb(t_node **b, int print);
 void	rrr(t_node **a, t_node **b, int print);
 
-// algos de tri
-void	bubble_sort_n_carre(t_node **lst);
-void	bucket_sort(t_node **a, t_node **b, int n);
+/* Sorting algorithms */
+void	bubble_sort_n_carre(t_node **lst, int print);
+void	bucket_sort(t_node **a, t_node **b, int n, int print);
+void	radix(t_node **a, t_node **b, int print);
+
+/* Disorder & Indexing */
+int		is_sorted(t_node *stack);
+void	index_stack(t_node *stack);
+double	compute_disorder(t_node *stack);
+
+/* Parser & stack utilities */
+int		parse_args(int argc, char **argv, t_config *cfg);
+int		parse_flag(char *str, t_config *cfg);
+int		validate_and_add(char *str, t_config *cfg);
+void	free_split(char **split);
+void	free_stack(t_node **stack);
+void	exit_error(t_config *cfg);
+int		ft_lstsize(t_node *lst);
+char	**ft_split(char const *s, char c);
+
+int	ft_lstsize(t_node *lst);
+char	**ft_split(char const *s, char c);
 
 #endif

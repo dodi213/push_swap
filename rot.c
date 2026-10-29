@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rot.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mharoud <mharoud@student.42lausanne.ch>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/10/26 16:54:17 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/26 17:04:16 by mharoud          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "push_swap.h"
 
 static void	rotate(t_node **stack)
@@ -30,21 +18,24 @@ static void	rotate(t_node **stack)
 	first->next = NULL;
 }
 
-void	ra(t_node **a)
+void	ra(t_node **a, int print)
 {
 	rotate(a);
-	write(1, "ra\n", 3);
+	if (print)
+		write(1, "ra\n", 3);
 }
 
-void	rb(t_node **b)
+void	rb(t_node **b, int print)
 {
 	rotate(b);
-	write(1, "rb\n", 3);
+	if (print)
+		write(1, "rb\n", 3);
 }
 
-void	rr(t_node **a, t_node **b)
+void	rr(t_node **a, t_node **b, int print)
 {
 	rotate(a);
 	rotate(b);
-	write(1, "rr\n", 3);
+	if (print)
+		write(1, "rr\n", 3);
 }
