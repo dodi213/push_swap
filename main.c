@@ -6,14 +6,14 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/11/04 16:22:00 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/11/04 16:23:12 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /* Decide which algorithm actually runs (adaptive resolves to one of the 3). */
-static void	pick_algo(t_config *cfg, int size)
+static void	pick_algo(t_config *cfg, int size, t_ops *ops)
 {
 	cfg->algo = cfg->mode;
 	if (cfg->mode != MODE_ADAPTIVE)
