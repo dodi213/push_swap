@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/11/04 16:23:12 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/11/04 16:25:17 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	execute_sort(t_config *cfg)
 
 	size = ft_lstsize(cfg->stack_a);
 	cfg->disorder = compute_disorder(cfg->stack_a);
-	pick_algo(cfg, size);
+	pick_algo(cfg, size, ops);
 	if (size < 2 || is_sorted(cfg->stack_a))
 		return ;
 	index_stack(cfg->stack_a);
