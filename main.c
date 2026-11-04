@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/11/04 16:14:09 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/11/04 16:20:06 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	pick_algo(t_config *cfg, int size)
 	if (cfg->mode != MODE_ADAPTIVE)
 		return ;
 	if (size <= 5)
-		special(&cfg->stack_a, &cfg->stack_b, t_ops *ops)
+		special(&cfg->stack_a, &cfg->stack_b, ops)
 	else if (size <= 3 || cfg->disorder < 0.20)
 		cfg->algo = MODE_SIMPLE;
 	else if (size <= 100 || cfg->disorder < 0.50)
