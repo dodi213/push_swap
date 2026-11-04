@@ -12,45 +12,52 @@
 
 #include "push_swap.h"
 
-static void	sort_adaptive(t_config *cfg, int size, int print)
+/* Decide which algorithm actually runs (adaptive resolves to one of the 3). */
+static void	pick_algo(t_config *cfg, int size)
 {
-	double	disorder;
-
-	disorder = compute_disorder(cfg->stack_a);
-	if (size <= 3 || disorder < 0.20)
-		bubble_sort_n_carre(&cfg->stack_a, print);
-	else if (size <= 100 || disorder < 0.50)
-		bucket_sort(&cfg->stack_a, &cfg->stack_b, size, print);
+	cfg->algo = cfg->mode;
+	if (cfg->mode != MODE_ADAPTIVE)
+		return ;
+	if (size <= 3 || cfg->disorder < 0.20)
+		cfg->algo = MODE_SIMPLE;
+	else if (size <= 100 || cfg->disorder < 0.50)
+		cfg->algo = MODE_MEDIUM;
 	else
-		radix(&cfg->stack_a, &cfg->stack_b, print);
+		cfg->algo = MODE_COMPLEX;
 }
 
 static void	execute_sort(t_config *cfg)
 {
 	int	size;
-	int	print;
 
 	size = ft_lstsize(cfg->stack_a);
+	cfg->disorder = compute_disorder(cfg->stack_a);
+	pick_algo(cfg, size);
 	if (size < 2 || is_sorted(cfg->stack_a))
 		return ;
-	print = !cfg->bench;
 	index_stack(cfg->stack_a);
-	if (cfg->mode == MODE_ADAPTIVE)
-		sort_adaptive(cfg, size, print);
-	else if (cfg->mode == MODE_SIMPLE)
-		bubble_sort_n_carre(&cfg->stack_a, print);
-	else if (cfg->mode == MODE_MEDIUM)
-		bucket_sort(&cfg->stack_a, &cfg->stack_b, size, print);
-	else if (cfg->mode == MODE_COMPLEX)
-		radix(&cfg->stack_a, &cfg->stack_b, print);
+	if (cfg->algo == MODE_SIMPLE)
+		bubble_sort_n_carre(&cfg->stack_a, &cfg->ops);
+	else if (cfg->algo == MODE_MEDIUM)
+		bucket_sort(&cfg->stack_a, &cfg->stack_b, size, &cfg->ops);
+	else
+		radix(&cfg->stack_a, &cfg->stack_b, &cfg->ops);
 }
 
 static void	init_config(t_config *cfg)
 {
+	int	i;
+
 	cfg->mode = MODE_ADAPTIVE;
+	cfg->algo = MODE_ADAPTIVE;
 	cfg->bench = 0;
+	cfg->disorder = 0.0;
 	cfg->stack_a = NULL;
 	cfg->stack_b = NULL;
+	cfg->ops.print = 1;
+	i = 0;
+	while (i < OP_COUNT)
+		cfg->ops.count[i++] = 0;
 }
 
 int	main(int argc, char **argv)
@@ -63,7 +70,8 @@ int	main(int argc, char **argv)
 	parse_args(argc, argv, &cfg);
 	smaller_init(&cfg.stack_a);
 	execute_sort(&cfg);
-	ft_print_val(cfg.stack_a);
+	if (cfg.bench)
+		print_bench(&cfg);
 	free_stack(&cfg.stack_a);
 	free_stack(&cfg.stack_b);
 	return (0);

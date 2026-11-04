@@ -30,49 +30,49 @@ static int	biggest(t_node **a)
 	return (big);
 }
 
-void	two_tokens(t_node **a, int print)
+void	two_tokens(t_node **a, t_ops *ops)
 {
 	if ((*a)->smaller > (*a)->next->smaller)
-		sa(a, print);
+		sa(a, ops);
 }
 
-void	three_tokens(t_node **a, int print)
+void	three_tokens(t_node **a, t_ops *ops)
 {
 	if ((*a)->smaller == biggest(a))
-		ra(a, print);
+		ra(a, ops);
 	else if ((*a)->next->smaller == biggest(a))
-		rra(a, print);
+		rra(a, ops);
 	if ((*a)->smaller > (*a)->next->smaller)
-		sa(a, print);
+		sa(a, ops);
 }
 
-void	four_tokens(t_node **a, t_node **b, int print)
+void	four_tokens(t_node **a, t_node **b, t_ops *ops)
 {
 	while ((*a)->smaller != 0)
-		ra(a, print);
-	pb(b, a, print);
-	three_tokens(a, print);
-	pa(a, b, print);
+		ra(a, ops);
+	pb(b, a, ops);
+	three_tokens(a, ops);
+	pa(a, b, ops);
 }
 
-void	five_tokens(t_node **a, t_node **b, int print)
+void	five_tokens(t_node **a, t_node **b, t_ops *ops)
 {
 	int		cnt;
 
-	cnt = o;
+	cnt = 0;
 	while (cnt < 2 && *a)
 	{
 		if ((*a)->smaller == 0 || (*a)->smaller == 1)
 		{
-			pb(b, a, print);
+			pb(b, a, ops);
 			cnt++;
 		}
 		else
-			ra(a, print);
+			ra(a, ops);
 	}
 	if ((*b)->smaller < (*b)->next->smaller)
-		sb(b, print);
-	three_tokens(a, print);
+		sb(b, ops);
+	three_tokens(a, ops);
 	while (*b)
-		pa(a, b, print);
+		pa(a, b, ops);
 }

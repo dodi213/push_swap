@@ -30,24 +30,21 @@ static void	rotate(t_node **stack)
 	first->next = NULL;
 }
 
-void	ra(t_node **a, int print)
+void	ra(t_node **a, t_ops *ops)
 {
 	rotate(a);
-	if (print)
-		write(1, "ra\n", 3);
+	op_emit(ops, OP_RA, "ra\n");
 }
 
-void	rb(t_node **b, int print)
+void	rb(t_node **b, t_ops *ops)
 {
 	rotate(b);
-	if (print)
-		write(1, "rb\n", 3);
+	op_emit(ops, OP_RB, "rb\n");
 }
 
-void	rr(t_node **a, t_node **b, int print)
+void	rr(t_node **a, t_node **b, t_ops *ops)
 {
 	rotate(a);
 	rotate(b);
-	if (print)
-		write(1, "rr\n", 3);
+	op_emit(ops, OP_RR, "rr\n");
 }

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	bubble_pass(t_node **lst, unsigned int len, int print)
+static int	bubble_pass(t_node **lst, unsigned int len, t_ops *ops)
 {
 	unsigned int	count;
 	int				swapped;
@@ -23,17 +23,17 @@ static int	bubble_pass(t_node **lst, unsigned int len, int print)
 	{
 		if ((*lst)->value > (*lst)->next->value)
 		{
-			sa(lst, print);
+			sa(lst, ops);
 			swapped = 1;
 		}
-		ra(lst, print);
+		ra(lst, ops);
 		count++;
 	}
-	ra(lst, print);
+	ra(lst, ops);
 	return (swapped);
 }
 
-void	bubble_sort_n_carre(t_node **lst, int print)
+void	bubble_sort_n_carre(t_node **lst, t_ops *ops)
 {
 	unsigned int	len;
 	unsigned int	cnt;
@@ -44,7 +44,7 @@ void	bubble_sort_n_carre(t_node **lst, int print)
 	cnt = 0;
 	while (cnt < len)
 	{
-		if (!bubble_pass(lst, len, print))
+		if (!bubble_pass(lst, len, ops))
 			break ;
 		cnt++;
 	}

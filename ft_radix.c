@@ -41,7 +41,7 @@ static int	size_bi(int nb)
 	return (i);
 }
 
-void	radix(t_node **a, t_node **b, int print)
+void	radix(t_node **a, t_node **b, t_ops *ops)
 {
 	int	i;
 	int	j;
@@ -59,13 +59,13 @@ void	radix(t_node **a, t_node **b, int print)
 		while (j < len)
 		{
 			if ((((*a)->smaller >> i) & 1) == 1)
-				ra(a, print);
+				ra(a, ops);
 			else
-				pb(b, a, print);
+				pb(b, a, ops);
 			j++;
 		}
 		while (*b)
-			pa(a, b, print);
+			pa(a, b, ops);
 		i++;
 	}
 }

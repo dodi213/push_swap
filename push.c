@@ -29,16 +29,14 @@ static void	push(t_node **dest, t_node **src)
 	*dest = node_to_move;
 }
 
-void	pa(t_node **a, t_node **b, int print)
+void	pa(t_node **a, t_node **b, t_ops *ops)
 {
 	push(a, b);
-	if (print)
-		write(1, "pa\n", 3);
+	op_emit(ops, OP_PA, "pa\n");
 }
 
-void	pb(t_node **b, t_node **a, int print)
+void	pb(t_node **b, t_node **a, t_ops *ops)
 {
 	push(b, a);
-	if (print)
-		write(1, "pb\n", 3);
+	op_emit(ops, OP_PB, "pb\n");
 }

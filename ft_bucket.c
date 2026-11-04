@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 15:35:35 by fferschi          #+#    #+#             */
-/*   Updated: 2026/10/29 16:25:41 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/11/04 15:23:15 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	n_max(t_node *lst)
 	return (max);
 }
 
-static void	extract_range(t_node **a, t_node **b, int inf, int sup, int print)
+static void	extract_range(t_node **a, t_node **b, int inf, int sup, t_ops *ops)
 {
 	int	i;
 	int	size;
@@ -50,24 +50,24 @@ static void	extract_range(t_node **a, t_node **b, int inf, int sup, int print)
 	while (i < size)
 	{
 		if ((*a)->smaller > inf && (*a)->smaller <= sup)
-			pb(b, a, print);
+			pb(b, a, ops);
 		else
-			ra(a, print);
+			ra(a, ops);
 		i++;
 	}
 }
 
-static void	return_to_a(t_node **a, t_node **b, int print)
+static void	return_to_a(t_node **a, t_node **b, t_ops *ops)
 {
-	bubble_sort_n_carre(b, print);
+	bubble_sort_n_carre(b, ops);
 	while (*b)
 	{
-		pa(a, b, print);
-		ra(a, print);
+		pa(a, b, ops);
+		ra(a, ops);
 	}
 }
 
-void	bucket_sort(t_node **a, t_node **b, int n, int print)
+void	bucket_sort(t_node **a, t_node **b, int n, t_ops *ops)
 {
 	int	max;
 	int	root;
@@ -84,12 +84,12 @@ void	bucket_sort(t_node **a, t_node **b, int n, int print)
 	limit_sup = (max / root) * bucket_num;
 	while (bucket_num < root)
 	{
-		extract_range(a, b, limit_inf, limit_sup, print);
-		return_to_a(a, b, print);
+		extract_range(a, b, limit_inf, limit_sup, ops);
+		return_to_a(a, b, ops);
 		bucket_num++;
 		limit_inf = limit_sup;
 		limit_sup = (max / root) * bucket_num;
 	}
-	extract_range(a, b, limit_inf, max, print);
-	return_to_a(a, b, print);
+	extract_range(a, b, limit_inf, max, ops);
+	return_to_a(a, b, ops);
 }

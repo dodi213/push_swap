@@ -28,24 +28,21 @@ static void	reverse_rotate(t_node **stack)
 	*stack = last;
 }
 
-void	rra(t_node **a, int print)
+void	rra(t_node **a, t_ops *ops)
 {
 	reverse_rotate(a);
-	if (print)
-		write(1, "rra\n", 4);
+	op_emit(ops, OP_RRA, "rra\n");
 }
 
-void	rrb(t_node **b, int print)
+void	rrb(t_node **b, t_ops *ops)
 {
 	reverse_rotate(b);
-	if (print)
-		write(1, "rrb\n", 4);
+	op_emit(ops, OP_RRB, "rrb\n");
 }
 
-void	rrr(t_node **a, t_node **b, int print)
+void	rrr(t_node **a, t_node **b, t_ops *ops)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	if (print)
-		write(1, "rrr\n", 4);
+	op_emit(ops, OP_RRR, "rrr\n");
 }
