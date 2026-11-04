@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/11/04 16:15:20 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/11/04 16:22:01 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,19 +91,11 @@ void	bucket_sort(t_node **a, t_node **b, int n, t_ops *ops);
 void	radix(t_node **a, t_node **b, t_ops *ops);
 
 /* Special case sorting algorithms */
-<<<<<<< Updated upstream
 void	two_tokens(t_node **a, t_ops *ops);
 void	three_tokens(t_node **a, t_ops *ops);
 void	four_tokens(t_node **a, t_node **b, t_ops *ops);
 void	five_tokens(t_node **a, t_node **b, t_ops *ops);
 void	special(t_node **a, t_node **b, t_ops *ops);
-=======
-void	two_tokens(t_node **a, int print);
-void	three_tokens(t_node **a, int print);
-void	four_tokens(t_node **a, t_node **b, int print);
-void	five_tokens(t_node **a, t_node **b, int print);
-void	special(t_node **a, t_node **b);
->>>>>>> Stashed changes
 
 /* Disorder & Indexing */
 int		is_sorted(t_node *stack);
