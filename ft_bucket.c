@@ -6,12 +6,11 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/23 15:35:35 by fferschi          #+#    #+#             */
-/*   Updated: 2026/11/04 15:23:15 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/11/04 16:40:00 by mharoud          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stddef.h>
 
 static int	ft_sqrt(int n)
 {
@@ -20,76 +19,97 @@ static int	ft_sqrt(int n)
 	root = 1;
 	while (n / root >= root)
 		root++;
-	root--;
-	return (root);
+	return (root - 1);
 }
 
-static int	n_max(t_node *lst)
+/* Position (0 = top) of the biggest index left in b. */
+static int	max_pos(t_node *b)
 {
 	int	max;
+	int	pos;
+	int	i;
 
-	if (!lst)
-		return (0);
-	max = lst->smaller;
-	while (lst)
+	max = b->smaller;
+	pos = 0;
+	i = 0;
+	while (b)
 	{
-		if (lst->smaller > max)
-			max = lst->smaller;
-		lst = lst->next;
+		if (b->smaller > max)
+		{
+			max = b->smaller;
+			pos = i;
+		}
+		i++;
+		b = b->next;
 	}
-	return (max);
+	return (pos);
 }
 
-static void	extract_range(t_node **a, t_node **b, int inf, int sup, t_ops *ops)
+/*
+** Phase 1: move everything to b, one window of `range` indexes at a time.
+** i = how many are already in b. An index <= i is small for this window:
+** it goes to the bottom of b (rb). An index in ]i, i + range] stays on top.
+** Anything bigger waits in a (ra). When we would do rb then ra, do rr.
+*/
+static void	push_chunks(t_node **a, t_node **b, int range, t_ops *ops)
 {
 	int	i;
-	int	size;
 
-	size = ft_lstsize(*a);
 	i = 0;
-	while (i < size)
+	while (*a)
 	{
-		if ((*a)->smaller > inf && (*a)->smaller <= sup)
+		if ((*a)->smaller <= i)
+		{
 			pb(b, a, ops);
+			i++;
+			if (*a && (*a)->smaller > i + range)
+				rr(a, b, ops);
+			else
+				rb(b, ops);
+		}
+		else if ((*a)->smaller <= i + range)
+		{
+			pb(b, a, ops);
+			i++;
+		}
 		else
 			ra(a, ops);
-		i++;
 	}
 }
 
-static void	return_to_a(t_node **a, t_node **b, t_ops *ops)
+/* Phase 2: bring the max of b to the top the short way, push it to a. */
+static void	push_back(t_node **a, t_node **b, t_ops *ops)
 {
-	bubble_sort_n_carre(b, ops);
+	int	pos;
+	int	size;
+
 	while (*b)
 	{
+		size = ft_lstsize(*b);
+		pos = max_pos(*b);
+		if (pos <= size / 2)
+		{
+			while (pos-- > 0)
+				rb(b, ops);
+		}
+		else
+		{
+			while (pos++ < size)
+				rrb(b, ops);
+		}
 		pa(a, b, ops);
-		ra(a, ops);
 	}
 }
 
 void	bucket_sort(t_node **a, t_node **b, int n, t_ops *ops)
 {
-	int	max;
-	int	root;
-	int	bucket_num;
-	int	limit_inf;
-	int	limit_sup;
+	int	range;
 
-	root = ft_sqrt(n);
-	if (n < 2 || root == 0)
+	if (n < 2)
 		return ;
-	max = n_max(*a);
-	bucket_num = 1;
-	limit_inf = -1;
-	limit_sup = (max / root) * bucket_num;
-	while (bucket_num < root)
-	{
-		extract_range(a, b, limit_inf, limit_sup, ops);
-		return_to_a(a, b, ops);
-		bucket_num++;
-		limit_inf = limit_sup;
-		limit_sup = (max / root) * bucket_num;
-	}
-	extract_range(a, b, limit_inf, max, ops);
-	return_to_a(a, b, ops);
+	range = ft_sqrt(n) * 3 / 2;
+	if (range < 1)
+		range = 1;
+	push_chunks(a, b, range, ops);
+	push_back(a, b, ops);
 }

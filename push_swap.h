@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/11/04 16:22:01 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/30 19:32:29 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	rrb(t_node **b, t_ops *ops);
 void	rrr(t_node **a, t_node **b, t_ops *ops);
 
 /* Sorting algorithms */
-void	bubble_sort_n_carre(t_node **lst, t_ops *ops);
+void	selection_sort(t_node **a, t_node **b, t_ops *ops);
 void	bucket_sort(t_node **a, t_node **b, int n, t_ops *ops);
 void	radix(t_node **a, t_node **b, t_ops *ops);
 
@@ -95,7 +95,6 @@ void	two_tokens(t_node **a, t_ops *ops);
 void	three_tokens(t_node **a, t_ops *ops);
 void	four_tokens(t_node **a, t_node **b, t_ops *ops);
 void	five_tokens(t_node **a, t_node **b, t_ops *ops);
-void	special(t_node **a, t_node **b, t_ops *ops);
 
 /* Disorder & Indexing */
 int		is_sorted(t_node *stack);

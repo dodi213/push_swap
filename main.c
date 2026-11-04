@@ -6,26 +6,40 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/11/04 16:25:17 by mharoud          ###   ########.fr       */
+/*   Updated: 2026/10/29 17:09:41 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* Decide which algorithm actually runs (adaptive resolves to one of the 3). */
-static void	pick_algo(t_config *cfg, int size, t_ops *ops)
+/*
+** Adaptive: the regime comes only from the disorder (subject thresholds).
+** 2-5 numbers use a fixed sort (constant ops, inside every regime's bound).
+*/
+static void	pick_algo(t_config *cfg)
 {
 	cfg->algo = cfg->mode;
 	if (cfg->mode != MODE_ADAPTIVE)
 		return ;
-	if (size <= 5)
-		special(&cfg->stack_a, &cfg->stack_b, ops);
-	else if (size <= 3 || cfg->disorder < 0.20)
+	if (cfg->disorder < 0.20)
 		cfg->algo = MODE_SIMPLE;
-	else if (size <= 100 || cfg->disorder < 0.50)
+	else if (cfg->disorder < 0.50)
 		cfg->algo = MODE_MEDIUM;
 	else
 		cfg->algo = MODE_COMPLEX;
+}
+
+/* Hand-made sorts for 2 to 5 numbers (adaptive mode only). */
+static void	sort_small(t_config *cfg, int size)
+{
+	if (size == 2)
+		two_tokens(&cfg->stack_a, &cfg->ops);
+	else if (size == 3)
+		three_tokens(&cfg->stack_a, &cfg->ops);
+	else if (size == 4)
+		four_tokens(&cfg->stack_a, &cfg->stack_b, &cfg->ops);
+	else
+		five_tokens(&cfg->stack_a, &cfg->stack_b, &cfg->ops);
 }
 
 static void	execute_sort(t_config *cfg)
@@ -34,12 +48,14 @@ static void	execute_sort(t_config *cfg)
 
 	size = ft_lstsize(cfg->stack_a);
 	cfg->disorder = compute_disorder(cfg->stack_a);
-	pick_algo(cfg, size, ops);
+	pick_algo(cfg);
 	if (size < 2 || is_sorted(cfg->stack_a))
 		return ;
 	index_stack(cfg->stack_a);
-	if (cfg->algo == MODE_SIMPLE)
-		bubble_sort_n_carre(&cfg->stack_a, &cfg->ops);
+	if (cfg->mode == MODE_ADAPTIVE && size <= 5)
+		sort_small(cfg, size);
+	else if (cfg->algo == MODE_SIMPLE)
+		selection_sort(&cfg->stack_a, &cfg->stack_b, &cfg->ops);
 	else if (cfg->algo == MODE_MEDIUM)
 		bucket_sort(&cfg->stack_a, &cfg->stack_b, size, &cfg->ops);
 	else
