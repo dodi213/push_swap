@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:29:59 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/30 19:32:29 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/11/04 17:35:03 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ void	rrb(t_node **b, t_ops *ops);
 void	rrr(t_node **a, t_node **b, t_ops *ops);
 
 /* Sorting algorithms */
-void	selection_sort(t_node **a, t_node **b, t_ops *ops);
-void	bucket_sort(t_node **a, t_node **b, int n, t_ops *ops);
+void	bubble_sort_n_carre(t_node **lst, t_ops *ops);
+void    bucket_sort(t_config *cfg, int n, t_ops *ops);
 void	radix(t_node **a, t_node **b, t_ops *ops);
 
 /* Special case sorting algorithms */

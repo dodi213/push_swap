@@ -14,7 +14,7 @@ SRCS		= main.c \
 			  push.c \
 			  rot.c \
 			  revrot.c \
-			  ft_selection.c \
+			  ft_bbsort.c \
 			  ft_bucket.c \
 			  ft_radix.c \
 			  special_case.c \

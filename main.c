@@ -6,7 +6,7 @@
 /*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/25 15:28:21 by mharoud           #+#    #+#             */
-/*   Updated: 2026/10/29 17:09:41 by fferschi         ###   ########.fr       */
+/*   Updated: 2026/11/04 17:36:02 by fferschi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ static void	execute_sort(t_config *cfg)
 	if (cfg->mode == MODE_ADAPTIVE && size <= 5)
 		sort_small(cfg, size);
 	else if (cfg->algo == MODE_SIMPLE)
-		selection_sort(&cfg->stack_a, &cfg->stack_b, &cfg->ops);
+		bubble_sort_n_carre(&cfg->stack_a, &cfg->ops);
 	else if (cfg->algo == MODE_MEDIUM)
-		bucket_sort(&cfg->stack_a, &cfg->stack_b, size, &cfg->ops);
+		bucket_sort(cfg, size, &cfg->ops);
 	else
 		radix(&cfg->stack_a, &cfg->stack_b, &cfg->ops);
 }

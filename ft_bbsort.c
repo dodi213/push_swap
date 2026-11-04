@@ -1,0 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_bbsort.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fferschi <fferschi@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/04 17:08:43 by fferschi          #+#    #+#             */
+/*   Updated: 2026/11/04 17:21:35 by fferschi         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+
+static int	bubble_pass(t_node **lst, unsigned int len, t_ops *ops)
+{
+	unsigned int	count;
+	int				swapped;
+
+	swapped = 0;
+	count = 1;
+	while (count < len)
+	{
+		if ((*lst)->value > (*lst)->next->value)
+		{
+			sa(lst, ops);
+			swapped = 1;
+		}
+		ra(lst, ops);
+		count++;
+	}
+	ra(lst, ops);
+	return (swapped);
+}
+
+void	bubble_sort_n_carre(t_node **lst, t_ops *ops)
+{
+	unsigned int	len;
+	unsigned int	cnt;
+
+	len = ft_lstsize(*lst);
+	if (len < 2)
+		return ;
+	cnt = 0;
+	while (cnt < len)
+	{
+		if (!bubble_pass(lst, len, ops))
+			break ;
+		cnt++;
+	}
+}
